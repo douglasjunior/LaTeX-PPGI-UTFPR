@@ -1,0 +1,181 @@
+%% Exemplo de utilizacao do estilo de formatacao normas-utf-tex (http://normas-utf-tex.sourceforge.net)
+%% Autores: Hugo Vieira Neto (hvieir@utfpr.edu.br)
+%%          Diogo Rosa Kuiaski (diogo.kuiaski@gmail.com)
+%% Colaboradores:
+%%          Cézar M. Vargas Benitez <cesarvargasb@gmail.com>
+%%          Marcos Talau <talau@users.sourceforge.net>
+
+
+\documentclass[openright]{normas-utf-tex} %openright = o capitulo comeca sempre em paginas impares
+%\documentclass[oneside]{normas-utf-tex} %oneside = para dissertacoes com numero de paginas menor que 100 (apenas frente da folha) 
+
+
+\usepackage[alf,abnt-emphasize=bf,bibjustif,recuo=0cm, abnt-etal-cite=2, abnt-etal-list=99]{abntcite} %configuracao correta das referencias bibliograficas.
+
+\usepackage[brazil]{babel} % pacote portugues brasileiro
+\usepackage[latin1]{inputenc} % pacote para acentuacao direta
+\usepackage{amsmath,amsfonts,amssymb} % pacote matematico
+\usepackage{graphicx} % pacote grafico
+\usepackage{times} % fonte times
+
+%Podem utilizar GEOMETRY{...} para realizar pequenos ajustes das margens. Onde, left=esquerda, right=direita, top=superior, bottom=inferior. P.ex.:
+%\geometry{left=3.0cm,right=1.5cm,top=4cm,bottom=1cm} 
+
+% ---------- Preambulo ----------
+\instituicao{Universidade Tecnológica Federal do Paraná} % nome da instituicao
+\departamento{Câmpus Cornélio Procópio}
+\diretoria{Diretoria de Pesquisa e Pós-Graduação}
+\programa{Programa de Pós-graduação em Informática} % nome do programa
+\area{Informática} % [Engenharia Biomédica] ou [Informática Industrial] ou [Telemática]
+
+\documento{Dissertação -- Mestrado} % [Dissertação] ou [Tese]
+\nivel{Mestrado} % [Mestrado] ou [Doutorado]
+\titulacao{Mestre} % [Mestre] ou [Doutor]
+
+\titulo{\MakeUppercase{T\'itulo do Trabalho em Português}} % titulo do trabalho em portugues
+\title{\MakeUppercase{Title in English}} % titulo do trabalho em ingles
+
+\autor{Nome Completo do Autor} % autor do trabalho
+\cita{SOBRENOME, Nome} % sobrenome (maiusculas), nome do autor do trabalho
+
+\palavraschave{Palavra-chave 1, Palavra-chave 2, ...} % palavras-chave do trabalho
+\keywords{Keyword 1, Keyword 2, ...} % palavras-chave do trabalho em ingles
+
+\comentario{Dissertação apresentada ao Programa de Pós-Graduação em Informática da Universidade Tecnológica Federal do Paraná -- UTFPR como requisito parcial para a obtenção do título de ``Mestre Profissional em Informática''.}
+
+%---------
+%TEXTO ABAIXO PARA O PDM 
+%---------
+%\comentario{Proposta de dissertação de mestrado apresentada ao Programa de Pós-Graduação em Informática da Universidade Tecnológica Federal do Paraná -- UTFPR como requisito parcial para a obtenção do título de ``Mestre Profissional em Informática''.}
+
+
+
+\orientador{Nome do Orientador} % nome do orientador do trabalho
+%\orientador[Orientadora:]{Nome da Orientadora} % <- no caso de orientadora, usar esta sintaxe
+%\coorientador{Nome do Co-orientador} % nome do co-orientador do trabalho, caso exista
+%\coorientador[Co-orientadora:]{Nome da Co-orientadora} % <- no caso de co-orientadora, usar esta sintaxe
+%\coorientador[Co-orientadores:]{Nome do Co-orientador} % no caso de 2 co-orientadores, usar esta sintaxe
+%\coorientadorb{Nome do Co-orientador 2}	% este comando inclui o nome do 2o co-orientador
+
+\local{Cornélio Procópio} % cidade
+\data{\the\year} % ano automatico
+
+
+%---------------------
+%
+%   ANEXAR O TERMO DE APROVAÇÃO CASO SEJA DISSERTAÇÃO DE MESTRADO.
+%
+%---------------------
+
+%---------- Inicio do Documento ----------
+\begin{document}
+
+\capa % geracao automatica da capa
+\folhaderosto % geracao automatica da folha de rosto
+%\termodeaprovacao % <- ainda a ser implementado corretamente
+
+% dedicatÃƒÂ³ria (opcional)
+\begin{dedicatoria}
+Texto da dedicatória.
+\end{dedicatoria}
+
+% agradecimentos (opcional)
+\begin{agradecimentos}
+Texto dos agradecimentos.
+\end{agradecimentos}
+
+% epigrafe (opcional)
+\begin{epigrafe}
+Texto da ep\'igrafe.
+\end{epigrafe}
+
+%resumo
+\begin{resumo}
+Texto do resumo (máximo de 500 palavras).
+\end{resumo}
+
+%abstract
+\begin{abstract}
+Abstract text (maximum of 500 words).
+\end{abstract}
+
+% listas (opcionais, mas recomenda-se a partir de 5 elementos)
+\listadefiguras % geracao automatica da lista de figuras
+\listadetabelas % geracao automatica da lista de tabelas
+\listadesiglas % geracao automatica da lista de siglas
+\listadesimbolos % geracao automatica da lista de simbolos
+
+% sumario
+\sumario % geracao automatica do sumario
+
+
+%---------- Inicio do Texto ----------
+% recomenda-se a escrita de cada capitulo em um arquivo texto separado (exemplo: intro.tex, fund.tex, exper.tex, concl.tex, etc.) e a posterior inclusao dos mesmos no mestre do documento utilizando o comando \input{}, da seguinte forma:
+%\input{intro.tex}
+%\input{fund.tex}
+%\input{exper.tex}
+%\input{concl.tex}
+
+
+%---------- Introdução 
+\include{./Capitulos/capitulo1} 
+%---------- Fundamentação 
+\include{./Capitulos/capitulo2} 
+
+\include{./Capitulos/capitulo3}
+%---------- Resultados
+\include{./Capitulos/capitulo4} 
+%---------- Conclusão 
+\include{./Capitulos/capitulo5} 
+
+%---------- Referencias ----------
+\bibliography{./Referencias/reflatex} % % geracao automatica das referencias a partir do arquivo reflatex.bib
+
+
+%---------- Apendices (opcionais) ----------
+\apendice
+\chapter{Nome do Apêndice}
+
+Use o comando {\ttfamily \textbackslash apendice} e depois comandos {\ttfamily \textbackslash chapter\{\}}
+para gerar t\'itulos de apên-dices.
+
+
+% ---------- Anexos (opcionais) ----------
+\anexo
+\chapter{Nome do Anexo}
+
+Use o comando {\ttfamily \textbackslash anexo} e depois comandos {\ttfamily \textbackslash chapter\{\}}
+para gerar t\'itulos de anexos.
+
+
+% --------- Lista de siglas --------
+%\textbf{* Observações:} a lista de siglas nao realiza a ordenacao das siglas em ordem alfabetica
+% Em breve isso sera implementado, enquanto isso:
+%\textbf{Sugestão:} crie outro arquivo .tex para siglas e utilize o comando \sigla{sigla}{descrição}.
+%Para incluir este arquivo no final do arquivo, utilize o comando \input{arquivo.tex}.
+%Assim, Todas as siglas serao geradas na ultima pagina. Entao, devera excluir a ultima pagina da versao final do arquivo
+% PDF do seu documento.
+
+
+%-------- Citacoes ---------
+% - Utilize o comando \citeonline{...} para citacoes com o seguinte formato: Autor et al. (2011).
+% Este tipo de formato eh utilizado no comeco do paragrafo. P.ex.: \citeonline{autor2011}
+
+% - Utilize o comando \cite{...} para citacoeses no meio ou final do paragrafo. P.ex.: \cite{autor2011}
+
+
+
+%-------- Titulos com nomes cientificos (titulo, capitulos e secoes) ----------
+% Regra para escrita de nomes cientificos:
+% Os nomes devem ser escritos em italico, 
+%a primeira letra do primeiro nome deve ser em maiusculo e o restante em minusculo (inclusive a primeira letra do segundo nome).
+% VEJA os exemplos abaixo.
+% 
+% 1) voce nao quer que a secao fique com uppercase (caixa alta) automaticamente:
+%\section[nouppercase]{\MakeUppercase{Estudo dos efeitos da radiacao ultravioleta C e TFD em celulas de} {\textit{Saccharomyces boulardii}}
+%
+% 2) por padrao os cases (maiusculas/minuscula) sao ajustados automaticamente, voce nao precisa usar makeuppercase e afins.
+% \section{Introducao} % a introducao sera posta no texto como INTRODUCAO, automaticamente, como a norma indica.
+
+
+\end{document}

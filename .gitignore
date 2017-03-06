@@ -1,0 +1,10 @@
+*.bbl
+*.blg
+*.out
+modelo_utfpr.pdf
+*.aux
+*.synctex.gz
+*.log
+*.lot
+*.lof
+*.toc
