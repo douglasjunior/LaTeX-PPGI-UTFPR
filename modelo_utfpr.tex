@@ -2,37 +2,68 @@
 %% Autores: Hugo Vieira Neto (hvieir@utfpr.edu.br)
 %%          Diogo Rosa Kuiaski (diogo.kuiaski@gmail.com)
 %% Colaboradores:
-%%          CÈzar M. Vargas Benitez <cesarvargasb@gmail.com>
+%%          C√©zar M. Vargas Benitez <cesarvargasb@gmail.com>
 %%          Marcos Talau <talau@users.sourceforge.net>
 
 
-\documentclass[openright]{normas-utf-tex} %openright = o capitulo comeca sempre em paginas impares
-%\documentclass[oneside]{normas-utf-tex} %oneside = para dissertacoes com numero de paginas menor que 100 (apenas frente da folha) 
-
+%\documentclass[openright]{normas-utf-tex} %openright = o capitulo comeca sempre em paginas impares
+\documentclass[oneside]{normas-utf-tex} %oneside = para dissertacoes com numero de paginas menor que 100 (apenas frente da folha) 
 
 \usepackage[alf,abnt-emphasize=bf,bibjustif,recuo=0cm, abnt-etal-cite=2, abnt-etal-list=99]{abntcite} %configuracao correta das referencias bibliograficas.
 
-\usepackage[brazil]{babel} % pacote portugues brasileiro
-\usepackage[latin1]{inputenc} % pacote para acentuacao direta
+\usepackage[brazil, english]{babel} % pacote portugues brasileiro
+\usepackage[utf8]{inputenc} % pacote para acentuacao direta
 \usepackage{amsmath,amsfonts,amssymb} % pacote matematico
+\usepackage[table,xcdraw]{xcolor} % permite tabelas coloridas
 \usepackage{graphicx} % pacote grafico
 \usepackage{times} % fonte times
+\usepackage[]{todonotes} % adicionar par√¢metro [disable] para ocultar os coment√°rios
+\usepackage{xspace} % usado nos coment√°rios
+\usepackage{microtype} % faz refinamento de tipografia 
+\usepackage{multirow} % faz m√∫ltiplas linhas na tabela
+\usepackage{listings} % Include the listings-package
+\usepackage{float} % fixa a posi√ß√£o da figura/tabela com H
+
+\usepackage{chngcntr} % Corrige o contador de figuras e tabelas
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+
+
+% atalho para \ref
+\newcommand{\fig}[1]{Figura~\ref{#1}}
+
+% toda vez que inserir palavras em ingles, usar esse comando: \ew{palavraEmIngles}
+\newcommand{\ew}[1]{\selectlanguage{english}\textit{#1}\selectlanguage{brazil}}
+
+\newcounter{todocounter}
+\setlength{\marginparwidth}{2cm}
+\reversemarginpar
+\newcommand{\nota}[1]{\xspace\stepcounter{todocounter}\todo[fancyline]{\thetodocounter: #1}}
+\newcommand{\notain}[2]{\stepcounter{todocounter}\todo[inline]{\thetodocounter: (#1) #2}}
+\newcommand{\notahl}[2]{\xspace\stepcounter{todocounter}\texthl{#1}\xspace\todo[fancyline]{\thetodocounter: #2}}
+
+\newcommand{\notaAlu}[1]{\xspace\stepcounter{todocounter}\todo[fancyline, color=green!50]{{\tiny[Aluno]} \scriptsize#1}}
+\newcommand{\notaOri}[1]{\xspace\stepcounter{todocounter}\todo[fancyline, color=blue!30]{{\tiny[Orientador]} \scriptsize#1}}
+
+% toda vez que inserir um comando e que desejar que ele apare√ßa como de c√≥digo fonte de implementa√ß√£oo, usar esse comando: \cmd{comando}
+\newcommand{\cmd}[1]{\texttt{#1}}
 
 %Podem utilizar GEOMETRY{...} para realizar pequenos ajustes das margens. Onde, left=esquerda, right=direita, top=superior, bottom=inferior. P.ex.:
 %\geometry{left=3.0cm,right=1.5cm,top=4cm,bottom=1cm} 
 
 % ---------- Preambulo ----------
-\instituicao{Universidade TecnolÛgica Federal do Paran·} % nome da instituicao
-\departamento{C‚mpus CornÈlio ProcÛpio}
-\diretoria{Diretoria de Pesquisa e PÛs-GraduaÁ„o}
-\programa{Programa de PÛs-graduaÁ„o em Inform·tica} % nome do programa
-\area{Inform·tica} % [Engenharia BiomÈdica] ou [Inform·tica Industrial] ou [Telem·tica]
+\instituicao{Universidade Tecnol√≥gica Federal do Paran√°} % nome da instituicao
+\departamento{C√¢mpus Corn√©lio Proc√≥pio}
+\diretoria{Diretoria de Pesquisa e P√≥s-Gradua√ß√£o}
+\programa{Programa de P√≥s-gradua√ß√£o em Inform√°tica} % nome do programa
+\area{Engenharia de Software} % [Engenharia Biom√©dica] ou [Inform√°tica Industrial] ou [Telem√°tica]
 
-\documento{DissertaÁ„o -- Mestrado} % [DissertaÁ„o] ou [Tese]
+\documento{Disserta√ß√£o -- Mestrado} % [Disserta√ß√£o] ou [Tese]
 \nivel{Mestrado} % [Mestrado] ou [Doutorado]
 \titulacao{Mestre} % [Mestre] ou [Doutor]
 
-\titulo{\MakeUppercase{T\'itulo do Trabalho em PortuguÍs}} % titulo do trabalho em portugues
+\titulo{\MakeUppercase{T√≠tulo do Trabalho em Portugu√™s}} % titulo do trabalho em portugues
 \title{\MakeUppercase{Title in English}} % titulo do trabalho em ingles
 
 \autor{Nome Completo do Autor} % autor do trabalho
@@ -41,12 +72,12 @@
 \palavraschave{Palavra-chave 1, Palavra-chave 2, ...} % palavras-chave do trabalho
 \keywords{Keyword 1, Keyword 2, ...} % palavras-chave do trabalho em ingles
 
-\comentario{DissertaÁ„o apresentada ao Programa de PÛs-GraduaÁ„o em Inform·tica da Universidade TecnolÛgica Federal do Paran· -- UTFPR como requisito parcial para a obtenÁ„o do tÌtulo de ``Mestre Profissional em Inform·tica''.}
+%\comentario{Disserta√ß√£o apresentada ao Programa de P√≥s-Gradua√ß√£o em Inform√°tica da Universidade Tecnol√≥gica Federal do Paran√° -- UTFPR como requisito parcial para a obten√ß√£o do t√≠tulo de ``Mestre Profissional em Inform√°tica''.}
 
 %---------
 %TEXTO ABAIXO PARA O PDM 
 %---------
-%\comentario{Proposta de dissertaÁ„o de mestrado apresentada ao Programa de PÛs-GraduaÁ„o em Inform·tica da Universidade TecnolÛgica Federal do Paran· -- UTFPR como requisito parcial para a obtenÁ„o do tÌtulo de ``Mestre Profissional em Inform·tica''.}
+\comentario{Proposta de disserta√ß√£o de mestrado apresentada ao Programa de P√≥s-Gradua√ß√£o em Inform√°tica da Universidade Tecnol√≥gica Federal do Paran√° -- UTFPR como requisito parcial para a obten√ß√£o do t√≠tulo de ``Mestre Profissional em Inform√°tica''.}
 
 
 
@@ -57,26 +88,27 @@
 %\coorientador[Co-orientadores:]{Nome do Co-orientador} % no caso de 2 co-orientadores, usar esta sintaxe
 %\coorientadorb{Nome do Co-orientador 2}	% este comando inclui o nome do 2o co-orientador
 
-\local{CornÈlio ProcÛpio} % cidade
+\local{Corn√©lio Proc√≥pio} % cidade
 \data{\the\year} % ano automatico
 
 
 %---------------------
 %
-%   ANEXAR O TERMO DE APROVA«√O CASO SEJA DISSERTA«√O DE MESTRADO.
+%   ANEXAR O TERMO DE APROVA√á√ÉO CASO SEJA DISSERTA√á√ÉO DE MESTRADO.
 %
 %---------------------
 
 %---------- Inicio do Documento ----------
 \begin{document}
+\selectlanguage{brazil}	% seleciona o portugu√™s como idioma principal
 
 \capa % geracao automatica da capa
 \folhaderosto % geracao automatica da folha de rosto
 %\termodeaprovacao % <- ainda a ser implementado corretamente
 
-% dedicat√É¬≥ria (opcional)
+% dedicatt√≥ria (opcional)
 \begin{dedicatoria}
-Texto da dedicatÛria.
+Texto da dedicat√≥ria.
 \end{dedicatoria}
 
 % agradecimentos (opcional)
@@ -86,12 +118,12 @@ Texto dos agradecimentos.
 
 % epigrafe (opcional)
 \begin{epigrafe}
-Texto da ep\'igrafe.
+Texto da ep√≠grafe.
 \end{epigrafe}
 
 %resumo
 \begin{resumo}
-Texto do resumo (m·ximo de 500 palavras).
+Texto do resumo (m√°ximo de 500 palavras).
 \end{resumo}
 
 %abstract
@@ -117,15 +149,15 @@ Abstract text (maximum of 500 words).
 %\input{concl.tex}
 
 
-%---------- IntroduÁ„o 
+%---------- Introdu√ß√£o
 \include{./Capitulos/capitulo1} 
-%---------- FundamentaÁ„o 
+%---------- Fundamenta√ß√£o
 \include{./Capitulos/capitulo2} 
 
 \include{./Capitulos/capitulo3}
 %---------- Resultados
 \include{./Capitulos/capitulo4} 
-%---------- Conclus„o 
+%---------- Conclus√£o
 \include{./Capitulos/capitulo5} 
 
 %---------- Referencias ----------
@@ -134,10 +166,10 @@ Abstract text (maximum of 500 words).
 
 %---------- Apendices (opcionais) ----------
 \apendice
-\chapter{Nome do ApÍndice}
+\chapter{Nome do Ap√™ndice}
 
 Use o comando {\ttfamily \textbackslash apendice} e depois comandos {\ttfamily \textbackslash chapter\{\}}
-para gerar t\'itulos de apÍn-dices.
+para gerar t√≠tulos de ap√™ndices.
 
 
 % ---------- Anexos (opcionais) ----------
@@ -145,13 +177,13 @@ para gerar t\'itulos de apÍn-dices.
 \chapter{Nome do Anexo}
 
 Use o comando {\ttfamily \textbackslash anexo} e depois comandos {\ttfamily \textbackslash chapter\{\}}
-para gerar t\'itulos de anexos.
+para gerar t√≠tulos de anexos.
 
 
 % --------- Lista de siglas --------
-%\textbf{* ObservaÁıes:} a lista de siglas nao realiza a ordenacao das siglas em ordem alfabetica
+%\textbf{* Observa√ß√µes:} a lista de siglas nao realiza a ordenacao das siglas em ordem alfabetica
 % Em breve isso sera implementado, enquanto isso:
-%\textbf{Sugest„o:} crie outro arquivo .tex para siglas e utilize o comando \sigla{sigla}{descriÁ„o}.
+%\textbf{Sugest√£o:} crie outro arquivo .tex para siglas e utilize o comando \sigla{sigla}{descri√ß√£o}.
 %Para incluir este arquivo no final do arquivo, utilize o comando \input{arquivo.tex}.
 %Assim, Todas as siglas serao geradas na ultima pagina. Entao, devera excluir a ultima pagina da versao final do arquivo
 % PDF do seu documento.

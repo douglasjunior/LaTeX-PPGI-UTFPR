@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CAPÕTULO 2
-\chapter{FUNDAMENTA«√O TE”RICA}  
+% CAP√çTULO 2
+\chapter{FUNDAMENTA√á√ÉO TE√ìRICA}  
 
-O capÌtulo de FundamentaÁ„o TeÛrica deve definir os principais conceitos do trabalho e apontar os trabalhos relacionados. ContÈm a exposiÁ„o ordenada e pormenorizada do assunto. … composta de revis„o de literatura, dividida em seÁıes e subseÁıes descritas detalhadamente. Cada seÁ„o ou subseÁ„o dever· ter um tÌtulo apropriado ao conte˙do. 
+O cap√≠tulo de Fundamenta√ß√£o Te√≥rica deve definir os principais conceitos do trabalho e apontar os trabalhos relacionados. Cont√©m a exposi√ß√£o ordenada e pormenorizada do assunto. √â composta de revis√£o de literatura, dividida em se√ß√µes e subse√ß√µes descritas detalhadamente. Cada se√ß√£o ou subse√ß√£o dever√° ter um t√≠tulo apropriado ao conte√∫do. 
 
 A seguir ilustra-se a forma de incluir figuras, tabelas, equa\c{c}\~oes, siglas e s\'imbolos no documento, obtendo indexa\c{c}\~ao autom\'atica em suas respectivas listas. A numera\c{c}\~ao sequencial de figuras, tabelas e equa\c{c}\~oes ocorre de modo autom\'atico. Refer\^encias cruzadas s\~ao obtidas atrav\'es dos comandos {\ttfamily \textbackslash label\{\}} e {\ttfamily \textbackslash ref\{\}}. Por exemplo, n\~ao \'e necess\'ario saber que o n\'umero deste cap\'itulo \'e~\ref{chap:desenv} para colocar o seu n\'umero no texto. Isto facilita muito a inser\c{c}\~ao, remo\c{c}\~ao ou reloca\c{c}\~ao de elementos numerados no texto (fato corriqueiro na escrita e corre\c{c}\~ao de um documento acad\^emico) sem a necessidade de renumer\'a-los todos.
 
@@ -59,3 +59,65 @@ F(u, v) = \sum_{m = 0}^{M - 1} \sum_{n = 0}^{N - 1} f(m, n) \exp \left[ -j 2 \pi
 
 O pacote \textsc{abn}\TeX\ permite ainda a defini\c{c}\~ao de siglas e s\'imbolos com indexa\c{c}\~ao autom\'atica atrav\'es dos comandos {\ttfamily \textbackslash sigla\{\}\{\}} e {\ttfamily \textbackslash simbolo\{\}\{\}}. Por exemplo, o significado das siglas\sigla{CPGEI}{Programa de P\'os-gradua\c{c}\~ao em Engenharia El\'etrica e Inform\'atica Industrial},\sigla{DAELN}{Departamento Acad\^emico de Eletr\^onica} e\sigla{UTFPR}{Universidade Tecnol\'ogica Federal do Paran\'a} aparecem automaticamente na lista de siglas, bem como o significado dos s\'imbolos\simbolo{$\lambda$}{comprimento de onda},\simbolo{$v$}{velocidade} e\simbolo{$f$}{frequ\^encia} aparecem automaticamente na lista de s\'imbolos. Mais detalhes sobre o uso destes e outros comandos do \textsc{abn}\TeX\ s\~ao encontrados na sua documenta\c{c}\~ao espec\'ifica~\cite{abnTeX2009}.
 
+\section{C√≥digo Fonte}
+
+O pacote \cmd{listings} est√° dispon√≠vel para a formata√ß√£o e colora√ß√£o de c√≥digo fonte em diversas linguagem de programa√ß√£o.
+Para utiliz√°-lo basta combinar os comandos \cmd{figure} e \cmd{lstlisting} seguindo os exemplos da \fig{fig:codigo_exemplo_java} para c√≥digo Java e \fig{fig:codigo_exemplo_xml} para c√≥digo XML.
+
+Mais op√ß√µes e linguagens dispon√≠veis na \cmd{listings} podem ser consultadas em sua documenta√ß√£o \footnote{Documenta√ß√£o da listings - http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf} ou Wiki\footnote{Wiki da listings - https://en.wikibooks.org/wiki/LaTeX/Source\_Code\_Listings}. 
+
+\begin{figure}[!htb]
+	\centering
+	\caption{Exemplo de c√≥digo Jaba}
+	\label{fig:codigo_exemplo_java}
+	
+	\begin{lstlisting}[
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=single,
+	xleftmargin=\parindent,
+	language=Java,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\color{blue!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	stringstyle=\color{orange},
+	numbers=left,
+	morekeywords={String}
+	]
+// Classe principal do projeto
+public class Main {
+   public static void Main() {
+      System.out.println("Ola Mundo!");
+   }
+}
+	\end{lstlisting}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\caption{Exemplo de c√≥digo XML}
+	\label{fig:codigo_exemplo_xml}
+	
+	\begin{lstlisting}[
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=single,
+	xleftmargin=\parindent,
+	language=XML,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\color{blue!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	stringstyle=\color{orange},
+	numbers=left,
+	morekeywords={persistence, unit, provider}
+	]
+<persistence ... >
+   <persistence-unit name="persistenceUnit" >
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      ...
+   </persistence-unit>
+</persistence>
+	\end{lstlisting}
+\end{figure}
