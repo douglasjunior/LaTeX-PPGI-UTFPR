@@ -33,7 +33,7 @@ Para facilitar o manuseio de seu projeto LaTeX, recomendo um conjunto de ferrame
 
 - [MikTeX](https://miktex.org/) (Windows) ou [MacTeX](http://www.tug.org/mactex/) (Mac OS) para compilação e gerenciamento dos pacotes/dependências.
 - [TeXstudio](http://www.texstudio.org/) para edição dos textos, autocompletar e correção ortográfica.
-- [Mendeley](www.mendeley.com) ou [JabRef](http://www.jabref.org/) para gerenciamento das referências e exportação do arquivo `.bib`
+- [Mendeley](http://www.mendeley.com) ou [JabRef](http://www.jabref.org/) para gerenciamento das referências e exportação do arquivo `.bib`
 - [Table Generator](http://www.tablesgenerator.com/) para auxiliar na criação de tabelas.
 
 ## Controle de versão
